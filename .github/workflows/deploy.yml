@@ -21,7 +21,7 @@ jobs:
           extended: true
 
       - name: 构建静态网页
-        run: hugo --baseURL "https://Robin-060.github.io/"
+        run: hugo --baseURL "https://robin-060.github.io/"
 
       - name: 部署到GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
