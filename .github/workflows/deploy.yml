@@ -6,18 +6,19 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 拉取源码
+      - name: 拉取仓库源码
         uses: actions/checkout@v4
-        with:
-          submodules: true
-      - name: 安装Hugo
+
+      - name: 安装Hugo扩展版
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.163.3'
+          hugo-version: 'latest'
           extended: true
-      - name: 构建静态页面
+
+      - name: 构建静态网页
         run: hugo --baseURL "https://Robin-060.github.io/"
-      - name: 发布到Pages
+
+      - name: 部署到GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
