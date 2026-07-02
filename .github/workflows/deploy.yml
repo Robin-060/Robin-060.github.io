@@ -1,4 +1,9 @@
 name: Deploy Hugo Blog to GitHub Pages
+# 新增权限配置
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 on:
   push:
     branches: [ main ]
