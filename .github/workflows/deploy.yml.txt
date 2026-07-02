@@ -1,0 +1,24 @@
+name: Deploy Hugo Blog to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取源码
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: 安装Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.163.3'
+          extended: true
+      - name: 构建静态页面
+        run: hugo --baseURL "https://Robin-060.github.io/"
+      - name: 发布到Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
